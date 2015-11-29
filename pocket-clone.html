@@ -1,0 +1,27 @@
+<head>
+  <title>Pocket</title>
+</head>
+
+<body>
+  <h1>My List</h1>
+  {{>list}}
+</body>
+
+<template name="list">
+	<div class="list">
+	  {{#each links}}
+	  	{{> link}}
+	  {{/each}}
+	 </div>
+</template>
+
+<template name="link">
+  <div class="link">
+  	<div class="link-image" style='background-image: url("{{ image }}");'></div>
+  	<div class="link-text-container">
+			<a class="link-title" href="{{ url }}"><h4>{{ title }}</h4></a>
+		</div>
+  </div>
+</template>
+
+
