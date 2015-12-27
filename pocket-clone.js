@@ -39,3 +39,8 @@ if (Meteor.isServer) {
     })
   });
 }
+
+function parseDomain (url) {
+  if (url.indexOf('http') > -1) return url.split('/')[2]
+  else return url.split('/')[0]
+}
