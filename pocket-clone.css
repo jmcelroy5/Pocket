@@ -1,33 +1,55 @@
 body {
+	font-family: "Helvetica Neue";
+	font-size: 13px;
+}
 
+a {
+	text-decoration: none;
 }
 
 .link {
+	display: flex;
+	/*justify-content: space-between;*/
 	width: 100%;
 	height: 100px;
+	/* dark gray */
 	border: 1px solid rgb(143,163,181);
 	cursor: pointer;
+	margin-bottom: 10px;
 }
 
 .link-image {
-	display: inline-block;
+	display: block;
 	background-size: cover, auto;
 	background-position: 50% 50%, 50% 50%;
 	width: 100px;
 	height: 100px;
 }
 
+.link-info {
+	align-self: center;
+	flex: 2 0 60%;
+	margin-left: 10px;
+}
+
+.link-toolbar {
+	align-self: center;
+	flex: 0 1 20%;
+	margin: 0 auto;
+}
+
 .link-title {
-	text-decoration: none;
 	color: rgb(0,0,0);
 }
 
-.link:hover .link-title {
-	color: rgb(80,188,182)
+.link-domain {
+	/* dark gray */
+	color: rgb(178,170,170);
 }
 
-.link-text-container {
-	display: inline-block;
-	vertical-align: top;
-	padding: 10px;
+.link-title:hover, 
+.link-domain:hover {
+	/* bright blue */
+	color: rgb(80,188,182);
 }
+

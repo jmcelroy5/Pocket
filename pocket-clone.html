@@ -5,6 +5,13 @@
 <body>
   <h1>My List</h1>
   {{>list}}
+  <div>
+	  <form class="save-link">
+	  	<h4>Save a Link</h4>
+	  	<input type="text" name="url" placeholder="url" />
+	  	<button type="submit">Save</button>
+	  </form>
+	 </div>
 </body>
 
 <template name="list">
@@ -16,12 +23,16 @@
 </template>
 
 <template name="link">
-  <div class="link">
-  	<div class="link-image" style='background-image: url("{{ image }}");'></div>
-  	<div class="link-text-container">
-			<a class="link-title" href="{{ url }}"><h4>{{ title }}</h4></a>
-		</div>
-  </div>
+	<a href="{{ url }}">
+	  <div class="link" href="{{ url }}">
+	  	<div class="link-image" style="background-image: url('{{ image }}');"></div>
+	  	<div class="link-info">
+				<h3 class="link-title">{{ title }}</h3>
+				<p class="link-domain">{{ domain }}</p>
+			</div>
+			<div class="link-toolbar">
+				<button class="delete" data-id="{{ _id }}">Delete</button>
+			</div>
+	  </div>
+	 </a>
 </template>
-
-
