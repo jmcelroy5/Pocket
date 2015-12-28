@@ -3,7 +3,7 @@ var Cards = new Mongo.Collection('cards');
 Router.route('/', function () {
   this.render('App', {
     data: () => {
-      const cards = Cards.find({}, {sort: {createdAt: -1}})
+      const cards = Cards.find({archived: false}, {sort: {createdAt: -1}})
       return {cards}
     }
   })
@@ -18,7 +18,7 @@ Router.route('/archive', function () {
 });
 
 if (Meteor.isClient) {
-  Template.body.events({
+  Template.App.events({
     'submit [data-action="save"]': (e) => {
       e.preventDefault();
       // save form values as new link doc
