@@ -3,7 +3,6 @@
 </head>
 
 <body>
-	  <form class="save-link">
 	<div class="page-container">
 		<div class="sidebar">
 			<a href="/list">My List</a>
@@ -25,6 +24,7 @@
 </template>
 
 <template name="formSaveLink">
+	<form data-action="save">
   	<h4>Save a Link</h4>
   	<input type="text" name="url" placeholder="url" />
   	<button type="submit">Save</button>
@@ -32,14 +32,14 @@
 </template>
 
 <template name="link">
-			<div class="link-toolbar">
-				<button class="delete" data-id="{{ _id }}">Delete</button>
-			</div>
 	<a href="{{ url }}" class="card">
   	<div class="card-image" style="background-image: url('{{ image }}');"></div>
   	<div class="card-info">
 			<h3>{{ title }}</h3>
 			<p class="card-domain">{{ domain }}</p>
+		</div>
+		<div class="card-toolbar">
+			<button data-id="{{ _id }}" data-action="delete">Delete</button>
 		</div>
 	 </a>
 </template>

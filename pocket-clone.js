@@ -8,7 +8,7 @@ if (Meteor.isClient) {
   })
 
   Template.body.events({
-    'submit .save-link': (e) => {
+    'submit [data-action="save"]': (e) => {
       e.preventDefault();
       // save form values as new link doc
       Meteor.call('addLink', e.target.url.value)
@@ -18,7 +18,7 @@ if (Meteor.isClient) {
   })
 
   Template.link.events({
-    'click .delete': (e) => {
+    'click [data-action="delete"]': (e) => {
       e.preventDefault()
       // delete link doc
       Meteor.call('deleteLink', e.target.getAttribute('data-id'))
