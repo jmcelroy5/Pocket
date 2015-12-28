@@ -1,12 +1,23 @@
 var Cards = new Mongo.Collection('cards');
 
-if (Meteor.isClient) {
-  Template.list.helpers({
-    cards: () => {
-      return Cards.find({}, {sort: {createdAt: -1}})
+Router.route('/', function () {
+  this.render('App', {
+    data: () => {
+      const cards = Cards.find({}, {sort: {createdAt: -1}})
+      return {cards}
     }
   })
+});
 
+Router.route('/archive', function () {
+  this.render('App', {
+    data: ()  => ({
+      cards: Cards.find({archived: true}, {sort: {createdAt: -1}})
+    })
+  })
+});
+
+if (Meteor.isClient) {
   Template.body.events({
     'submit [data-action="save"]': (e) => {
       e.preventDefault();
