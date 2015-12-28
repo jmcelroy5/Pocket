@@ -2,17 +2,21 @@
   <title>Pocket</title>
 </head>
 
-<body>
+<template name="App">
 	<div class="page-container">
-		<div class="sidebar">
-			<a href="/list">My List</a>
-			<a href="/favorites">Favorites</a>
-			<a href="/archive">Archive</a>
-			<a href="tags">Tags</a>
-		</div>
+		{{>sidebar}}
 	  {{>list}}
 	</div>
-</body>
+</template>
+
+<template name="sidebar">
+	<div class="sidebar">
+		<a href="/">My List</a>
+		<a href="/">Favorites</a>
+		<a href="/archive">Archive</a>
+		<a href="/">Tags</a>
+	</div>
+</template>
 
 <template name="list">
 	<div class="list">
@@ -26,7 +30,7 @@
 <template name="formSaveCard">
 	<form data-action="save">
   	<h4>Save a Link</h4>
-  	<input type="text" name="url" placeholder="url" />
+  	<input required type="text" name="url" placeholder="url" />
   	<button type="submit">Save</button>
   </form>
 </template>
