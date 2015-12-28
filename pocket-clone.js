@@ -62,8 +62,9 @@ if (Meteor.isServer) {
       Cards.remove(id)
     }
     , archive: (id) => {
+      const current = Cards.findOne({_id: id}).archived
       Cards.update(id, {
-        $set: {archived: true}
+        $set: {archived: !current}
       })
     }
     })
