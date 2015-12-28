@@ -8,7 +8,7 @@ a {
 	color: rgb(0,0,0);
 }
 
-a:visited{
+a:visited {
 	color: rgb(0,0,0);
 }
 
@@ -58,9 +58,15 @@ a:hover {
 }
 
 .card-toolbar {
+	opacity: 0;
+	transition: opacity .2s linear;
 	align-self: center;
 	flex: 0 1 20%;
 	margin: 0 auto;
+}
+
+.card:hover > .card-toolbar {
+	opacity: 100;
 }
 
 .card-domain {
