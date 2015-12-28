@@ -4,7 +4,7 @@ Router.route('/', function () {
   this.render('App', {
     data: () => {
       const cards = Cards.find({archived: false}, {sort: {createdAt: -1}})
-      return {cards}
+      return {header: 'My List', cards}
     }
   })
 });
@@ -12,7 +12,8 @@ Router.route('/', function () {
 Router.route('/archive', function () {
   this.render('App', {
     data: ()  => ({
-      cards: Cards.find({archived: true}, {sort: {createdAt: -1}})
+      header: 'Archived'
+    , cards: Cards.find({archived: true}, {sort: {createdAt: -1}})
     })
   })
 });
