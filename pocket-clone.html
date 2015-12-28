@@ -3,15 +3,16 @@
 </head>
 
 <body>
-  <h1>My List</h1>
-  {{>list}}
-  <div>
 	  <form class="save-link">
-	  	<h4>Save a Link</h4>
-	  	<input type="text" name="url" placeholder="url" />
-	  	<button type="submit">Save</button>
-	  </form>
-	 </div>
+	<div class="page-container">
+		<div class="sidebar">
+			<a href="/list">My List</a>
+			<a href="/favorites">Favorites</a>
+			<a href="/archive">Archive</a>
+			<a href="tags">Tags</a>
+		</div>
+	  {{>list}}
+	</div>
 </body>
 
 <template name="list">
@@ -19,20 +20,26 @@
 	  {{#each links}}
 	  	{{> link}}
 	  {{/each}}
+	  {{> formSaveLink}}
 	 </div>
 </template>
 
+<template name="formSaveLink">
+  	<h4>Save a Link</h4>
+  	<input type="text" name="url" placeholder="url" />
+  	<button type="submit">Save</button>
+  </form>
+</template>
+
 <template name="link">
-	<a href="{{ url }}">
-	  <div class="link" href="{{ url }}">
-	  	<div class="link-image" style="background-image: url('{{ image }}');"></div>
-	  	<div class="link-info">
-				<h3 class="link-title">{{ title }}</h3>
-				<p class="link-domain">{{ domain }}</p>
-			</div>
 			<div class="link-toolbar">
 				<button class="delete" data-id="{{ _id }}">Delete</button>
 			</div>
-	  </div>
+	<a href="{{ url }}" class="card">
+  	<div class="card-image" style="background-image: url('{{ image }}');"></div>
+  	<div class="card-info">
+			<h3>{{ title }}</h3>
+			<p class="card-domain">{{ domain }}</p>
+		</div>
 	 </a>
 </template>

@@ -5,11 +5,36 @@ body {
 
 a {
 	text-decoration: none;
+	color: rgb(0,0,0);
 }
 
-.link {
+a:visited{
+	color: rgb(0,0,0);
+}
+
+a:hover {
+	color: rgb(80,188,182);
+}
+
+.page-container {
 	display: flex;
-	/*justify-content: space-between;*/
+}
+
+.sidebar {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar > a {
+	display: block;
+	margin: 10px auto;
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+.card {
+	display: flex;
 	width: 100%;
 	height: 100px;
 	/* dark gray */
@@ -18,7 +43,7 @@ a {
 	margin-bottom: 10px;
 }
 
-.link-image {
+.card-image {
 	display: block;
 	background-size: cover, auto;
 	background-position: 50% 50%, 50% 50%;
@@ -26,30 +51,19 @@ a {
 	height: 100px;
 }
 
-.link-info {
+.card-info {
 	align-self: center;
 	flex: 2 0 60%;
 	margin-left: 10px;
 }
 
-.link-toolbar {
+.card-toolbar {
 	align-self: center;
 	flex: 0 1 20%;
 	margin: 0 auto;
 }
 
-.link-title {
-	color: rgb(0,0,0);
-}
-
-.link-domain {
-	/* dark gray */
+.card-domain {
 	color: rgb(178,170,170);
-}
-
-.link-title:hover, 
-.link-domain:hover {
-	/* bright blue */
-	color: rgb(80,188,182);
 }
 
