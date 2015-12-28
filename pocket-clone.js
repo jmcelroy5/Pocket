@@ -23,6 +23,11 @@ if (Meteor.isClient) {
       const id = e.target.parentElement.getAttribute('data-id')
       Meteor.call('delete', id)
     }
+  , 'click [data-action="archive"]': (e) => {
+      e.preventDefault()
+      const id = e.target.parentElement.getAttribute('data-id')
+      Meteor.call('archive', id)
+  }
   })
 }
 
@@ -36,6 +41,10 @@ if (Meteor.isServer) {
     , delete: (id) => {
       Cards.remove(id)
     }
+    , archive: (id) => {
+      Cards.update(id, {
+        $set: {archived: true}
+      })
     }
     })
   });
