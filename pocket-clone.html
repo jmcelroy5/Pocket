@@ -45,8 +45,12 @@
 		</div>
 		<div class="card-toolbar" data-id="{{ _id }}">
 			<button data-action="delete">Delete</button>
-			<button data-action="archive">Archive</button>
-			<button data-action="favorite">Fav</button>
+			<button data-action="archive">
+				{{#if archived}}Add to List{{else}}Archive{{/if}}
+			</button>
+			<button data-action="favorite">
+				{{#if favorite}}Unfavorite{{else}}Favorite{{/if}}
+			</button>
 		</div>
 	 </a>
 </template>
