@@ -16,14 +16,14 @@
 
 <template name="list">
 	<div class="list">
-	  {{#each links}}
-	  	{{> link}}
+	  {{#each cards}}
+	  	{{> card}}
 	  {{/each}}
-	  {{> formSaveLink}}
+	  {{> formSaveCard}}
 	 </div>
 </template>
 
-<template name="formSaveLink">
+<template name="formSaveCard">
 	<form data-action="save">
   	<h4>Save a Link</h4>
   	<input type="text" name="url" placeholder="url" />
@@ -31,15 +31,15 @@
   </form>
 </template>
 
-<template name="link">
+<template name="card">
 	<a href="{{ url }}" class="card">
   	<div class="card-image" style="background-image: url('{{ image }}');"></div>
   	<div class="card-info">
 			<h3>{{ title }}</h3>
 			<p class="card-domain">{{ domain }}</p>
 		</div>
-		<div class="card-toolbar">
-			<button data-id="{{ _id }}" data-action="delete">Delete</button>
+		<div class="card-toolbar" data-id="{{ _id }}">
+			<button data-action="delete">Delete</button>
 		</div>
 	 </a>
 </template>
