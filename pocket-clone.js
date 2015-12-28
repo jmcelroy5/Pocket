@@ -7,7 +7,7 @@ Router.route('/', function () {
       return {header: 'My List', cards}
     }
   })
-});
+})
 
 Router.route('/archive', function () {
   this.render('App', {
@@ -16,7 +16,16 @@ Router.route('/archive', function () {
     , cards: Cards.find({archived: true}, {sort: {createdAt: -1}})
     })
   })
-});
+})
+
+Router.route('/favorites', function () {
+  this.render('App', {
+    data: ()  => ({
+      header: 'Archived'
+    , cards: Cards.find({favorite: true}, {sort: {createdAt: -1}})
+    })
+  })
+})
 
 if (Meteor.isClient) {
   Template.App.events({
@@ -39,6 +48,11 @@ if (Meteor.isClient) {
       e.preventDefault()
       const id = e.target.parentElement.getAttribute('data-id')
       Meteor.call('archive', id)
+  }
+  , 'click [data-action="favorite"]': (e) => {
+      e.preventDefault()
+      const id = e.target.parentElement.getAttribute('data-id')
+      Meteor.call('favorite', id)
   }
   })
 }
@@ -66,6 +80,12 @@ if (Meteor.isServer) {
       const current = Cards.findOne({_id: id}).archived
       Cards.update(id, {
         $set: {archived: !current}
+      })
+    }
+    , favorite: (id) => {
+      const current = Cards.findOne({_id: id}).favorite
+      Cards.update(id, {
+        $set: {favorite: !current}
       })
     }
     })
