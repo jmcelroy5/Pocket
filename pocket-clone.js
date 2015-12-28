@@ -47,7 +47,16 @@ if (Meteor.isServer) {
     Meteor.methods({
       add: (link) => {
         const {url, domain, image, title} = ScrapeParser.get(link)
-        Cards.insert({url, domain, image, title, createdAt: Date.now()})
+        Cards.insert({
+          url
+        , domain
+        , image
+        , title
+        , favorite: false
+        , archived: false
+        , tags: []
+        , createdAt: Date.now()
+        })
       }
     , delete: (id) => {
       Cards.remove(id)
