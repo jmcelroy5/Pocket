@@ -1,4 +1,5 @@
 <head>
+	<meta charset="utf-8">
   <title>Pocket</title>
 </head>
 
@@ -44,13 +45,13 @@
 			<p class="card-domain">{{ domain }}</p>
 		</div>
 		<div class="card-toolbar" data-id="{{ _id }}">
-			<button data-action="delete">Delete</button>
-			<button data-action="archive">
+			<button class="toolbar-icon" data-action="delete">Delete</button>
+			<button class="toolbar-icon" data-action="archive">
 				{{#if archived}}Add to List{{else}}Archive{{/if}}
 			</button>
-			<button data-action="favorite">
-				{{#if favorite}}Unfavorite{{else}}Favorite{{/if}}
-			</button>
+			<button class="toolbar-icon {{#if favorite}}gold{{else}}gray{{/if}}" 
+				data-action="favorite"
+			>★</button>
 		</div>
 	 </a>
 </template>
