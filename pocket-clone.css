@@ -16,6 +16,22 @@ a:hover {
 	color: rgb(80,188,182);
 }
 
+.btn {
+	cursor: pointer;
+	padding: 8px 12px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-weight: bold;
+}
+
+.hollow {
+	background: white;
+}
+
+.warning {
+	background-color: rgb(255,194,3);
+}
+
 .page-container {
 	display: flex;
 }
