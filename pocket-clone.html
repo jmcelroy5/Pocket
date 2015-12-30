@@ -38,20 +38,29 @@
 </template>
 
 <template name="card">
-	<a href="{{ url }}" class="card">
-  	<div class="card-image" style="background-image: url('{{ image }}');"></div>
-  	<div class="card-info">
+	<div class="card">
+		<a href="{{ url }}">
+  		<div class="card-image" style="background-image: url('{{ image }}');"></div>
+  	</a>
+  	<a href="{{ url }}" class="card-info">
 			<h3>{{ title }}</h3>
 			<p class="card-domain">{{ domain }}</p>
-		</div>
+		</a>
 		<div class="card-toolbar" data-id="{{ _id }}">
-			<button class="toolbar-icon" data-action="delete">Delete</button>
-			<button class="toolbar-icon" data-action="archive">
+			<button class="toolbar-icon fade" data-action="delete-popover">
+				Delete
+			</button>
+			<span class="popover" data-id="{{ _id }}">
+				<h3 class="marginTop0">Are you sure?</h3>
+				<button data-action="delete-popover" class="btn hollow">Cancel</button>
+				<button data-action="delete-confirm" class="btn warning">Delete</button>
+			</span>
+			<button class="toolbar-icon fade" data-action="archive">
 				{{#if archived}}Add to List{{else}}Archive{{/if}}
 			</button>
-			<button class="toolbar-icon {{#if favorite}}gold{{else}}gray{{/if}}" 
+			<button class="toolbar-icon {{#if favorite}}gold{{else}}gray fade{{/if}}" 
 				data-action="favorite"
 			>★</button>
 		</div>
-	 </a>
+	 </div>
 </template>

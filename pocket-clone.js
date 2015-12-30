@@ -39,11 +39,18 @@ if (Meteor.isClient) {
   })
 
   Template.card.events({
-    'click [data-action="delete"]': (e) => {
+    'click [data-action="delete-popover"]': (e, template) => {
       e.preventDefault()
-      const id = e.target.parentElement.getAttribute('data-id')
-      Meteor.call('delete', id)
+      template.$('.popover').toggleClass('visible')
+      // keep the toolbar visible while popover is active
+      template.$('.toolbar-icon:not(.gold)').toggleClass('fade')
     }
+  , 'click [data-action="delete-confirm"]': (e, template) => {
+    e.preventDefault()
+    template.$('.popover').toggleClass('visible')
+    const id = e.target.parentElement.getAttribute('data-id')
+    Meteor.call('delete', id)
+  }
   , 'click [data-action="archive"]': (e) => {
       e.preventDefault()
       const id = e.target.parentElement.getAttribute('data-id')

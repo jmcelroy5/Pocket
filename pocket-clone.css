@@ -75,8 +75,11 @@ a:hover {
 
 .card-toolbar {
 	align-self: center;
-	flex: 0 1 20%;
+	flex: 0 0 20%;
 	margin: 0 auto;
+	/* for popover positioning */
+	position: relative;
+	display: inline-block;
 }
 
 .toolbar-icon {
@@ -88,7 +91,7 @@ a:hover {
 	cursor: pointer;
 }
 
-.toolbar-icon:not(.gold) {
+.toolbar-icon.fade {
 	opacity: 0;
 	transition: opacity .2s linear;
 }
@@ -109,3 +112,38 @@ a:hover {
 	color: rgb(143,163,181);
 }
 
+.popover {
+  background-color: white;
+  border-radius: 5px;
+  top: 27px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  display: none;
+  left: -65px;
+  padding: 15px;
+  position: absolute;
+  width: 150px;
+  z-index: 4;
+  text-align: center;
+}
+
+/* triangle pointer above popover */
+.popover:after {
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent;
+	border-bottom-color: #ccc;
+  top: -17px;
+  margin-left: -8px;
+  left: 50%;
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.visible {
+  display: block;
+}
+
+.marginTop0 {
+	margin-top: 0;
+}
