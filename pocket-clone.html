@@ -37,24 +37,31 @@
   </form>
 </template>
 
+<template name="cardToolbar">
+	<div data-id="{{ _id }}">
+		<i class="toolbar-icon fade fa fa-trash-o fa-lg" data-action="delete-popover"></i>
+		<span class="popover" data-id="{{ _id }}">
+			<h3>Are you sure?</h3>
+			<button data-action="delete-popover" class="btn hollow">Cancel</button>
+			<button data-action="delete-confirm" class="btn warning">Delete</button>
+		</span>
+		<i class="toolbar-icon fade fa fa-lg {{#if archived}}fa-plus{{else}}fa-check{{/if}}" data-action="archive"></i>
+		<i class="toolbar-icon fade fa fa-star fa-lg {{#if favorite}}gold{{/if}}" data-action="favorite"></i>
+	</div>
+</template>
+
 <template name="card">
 	<div class="card">
 		<a href="{{ url }}">
   		<div class="card-image" style="background-image: url('{{ image }}');"></div>
   	</a>
-  	<a href="{{ url }}" class="card-info">
-			<h3>{{ title }}</h3>
-			<p class="card-domain">{{ domain }}</p>
-		</a>
-		<div class="card-toolbar" data-id="{{ _id }}">
-			<i class="toolbar-icon fade fa fa-trash-o fa-lg" data-action="delete-popover"></i>
-			<span class="popover" data-id="{{ _id }}">
-				<h3>Are you sure?</h3>
-				<button data-action="delete-popover" class="btn hollow">Cancel</button>
-				<button data-action="delete-confirm" class="btn warning">Delete</button>
-			</span>
-			<i class="toolbar-icon fade fa fa-lg {{#if archived}}fa-plus{{else}}fa-check{{/if}}" data-action="archive"></i>
-			<i class="toolbar-icon fade fa fa-star fa-lg {{#if favorite}}gold{{/if}}" data-action="favorite"></i>
+  	<div class="card-info">
+			<a href="{{ url }}">
+				<h3>{{ title }}</h3>
+				<p class="card-domain">{{ domain }}</p>
+			</a>
+			<div class="card-toolbar-mobile">{{>cardToolbar}}</div>
 		</div>
+		<div class="card-toolbar">{{>cardToolbar}}</div>
 	 </div>
 </template>

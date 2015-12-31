@@ -61,7 +61,6 @@ a:hover {
 	border: 1px solid rgb(143,163,181);
 	cursor: pointer;
 	margin-bottom: 10px;
-	overflow: hidden;
 }
 
 .card-image {
@@ -107,6 +106,7 @@ a:hover {
 
 .card-domain {
 	color: rgb(178,170,170);
+	display: inline-block;
 }
 
 .gold {
@@ -141,7 +141,21 @@ a:hover {
   position: absolute;
 }
 
-.visible {
-  display: block;
+.block {
+	display: block;
 }
 
+.card-toolbar-mobile {
+	display: none;
+}
+
+@media (max-width: 500px) {
+	.card-toolbar {
+		display: none;
+	}
+	.card-toolbar-mobile {
+		position: relative;
+		display: inline-block;
+		margin-left: 15px;
+	}
+}	
