@@ -21,7 +21,7 @@ Router.route('/archive', function () {
 Router.route('/favorites', function () {
   this.render('App', {
     data: ()  => ({
-      header: 'Archived'
+      header: 'Favorites'
     , cards: Cards.find({favorite: true}, {sort: {createdAt: -1}})
     })
   })

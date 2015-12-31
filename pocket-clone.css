@@ -1,6 +1,11 @@
 body {
-	font-family: "Helvetica Neue";
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
 	font-size: 13px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
 }
 
 a {
@@ -40,12 +45,12 @@ a:hover {
 	width: 20%;
 	display: flex;
 	flex-direction: column;
+	margin-top: 10px;
 }
 
 .sidebar > a {
 	display: block;
 	margin: 10px auto;
-	font-weight: bold;
 	font-size: 1.3em;
 }
 
@@ -53,10 +58,10 @@ a:hover {
 	display: flex;
 	width: 100%;
 	height: 100px;
-	/* dark gray */
 	border: 1px solid rgb(143,163,181);
 	cursor: pointer;
 	margin-bottom: 10px;
+	overflow: hidden;
 }
 
 .card-image {
@@ -69,34 +74,34 @@ a:hover {
 
 .card-info {
 	align-self: center;
-	flex: 2 0 60%;
+	flex: 2 0 300px;
 	margin-left: 10px;
 }
 
 .card-toolbar {
 	align-self: center;
-	flex: 0 0 20%;
-	margin: 0 auto;
+	flex: 0 0 100px;
 	/* for popover positioning */
 	position: relative;
 	display: inline-block;
 }
 
 .toolbar-icon {
-	border: 0;
-	background: 0;
-	outline: none;
-	font-size: 1em;
-	outline: none;
+	color: rgb(143,163,181);
 	cursor: pointer;
+	margin-right: 10px;
 }
 
-.toolbar-icon.fade {
+.toolbar-icon:hover:not(.gold) {
+	color: black;
+}
+
+.fade:not(.gold) {
 	opacity: 0;
 	transition: opacity .2s linear;
 }
 
-.card:hover .toolbar-icon {
+.card:hover .fade:not(.gold) {
 	opacity: 100;
 }
 
@@ -108,10 +113,6 @@ a:hover {
 	color: rgb(255,194,3);
 }
 
-.gray {
-	color: rgb(143,163,181);
-}
-
 .popover {
   background-color: white;
   border-radius: 5px;
@@ -119,7 +120,7 @@ a:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   display: none;
   left: -65px;
-  padding: 15px;
+  padding: 10px;
   position: absolute;
   width: 150px;
   z-index: 4;
@@ -144,6 +145,3 @@ a:hover {
   display: block;
 }
 
-.marginTop0 {
-	margin-top: 0;
-}

@@ -47,20 +47,14 @@
 			<p class="card-domain">{{ domain }}</p>
 		</a>
 		<div class="card-toolbar" data-id="{{ _id }}">
-			<button class="toolbar-icon fade" data-action="delete-popover">
-				Delete
-			</button>
+			<i class="toolbar-icon fade fa fa-trash-o fa-lg" data-action="delete-popover"></i>
 			<span class="popover" data-id="{{ _id }}">
-				<h3 class="marginTop0">Are you sure?</h3>
+				<h3>Are you sure?</h3>
 				<button data-action="delete-popover" class="btn hollow">Cancel</button>
 				<button data-action="delete-confirm" class="btn warning">Delete</button>
 			</span>
-			<button class="toolbar-icon fade" data-action="archive">
-				{{#if archived}}Add to List{{else}}Archive{{/if}}
-			</button>
-			<button class="toolbar-icon {{#if favorite}}gold{{else}}gray fade{{/if}}" 
-				data-action="favorite"
-			>★</button>
+			<i class="toolbar-icon fade fa fa-lg {{#if archived}}fa-plus{{else}}fa-check{{/if}}" data-action="archive"></i>
+			<i class="toolbar-icon fade fa fa-star fa-lg {{#if favorite}}gold{{/if}}" data-action="favorite"></i>
 		</div>
 	 </div>
 </template>
