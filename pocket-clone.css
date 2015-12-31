@@ -92,7 +92,7 @@ a:hover {
 }
 
 .toolbar-icon:hover:not(.gold) {
-	color: black;
+	color: rgb(41,97,130);
 }
 
 .fade:not(.gold) {
@@ -114,12 +114,14 @@ a:hover {
 }
 
 .popover {
-  background-color: white;
+	color: #fff;
+	border-color: rgb(143,163,181);
+  background-color: rgb(143,163,181);
   border-radius: 5px;
   top: 27px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px #d7d7d7;
   display: none;
-  left: -65px;
+  right: 8px;
   padding: 10px;
   position: absolute;
   width: 150px;
@@ -132,8 +134,8 @@ a:hover {
 	border-width: 8px;
 	border-style: solid;
 	border-color: transparent;
-	border-bottom-color: #ccc;
-  top: -17px;
+	border-bottom-color: rgb(143,163,181);
+  top: -16px;
   margin-left: -8px;
   left: 50%;
   content: '';
