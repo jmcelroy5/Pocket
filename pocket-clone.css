@@ -113,18 +113,21 @@ a:hover {
 	color: rgb(255,194,3);
 }
 
+.popover-delete {
+	width: 150px;
+	top: 27px;
+	right: 8px;
+}
+
 .popover {
 	color: #fff;
 	border-color: rgb(143,163,181);
   background-color: rgb(143,163,181);
   border-radius: 5px;
-  top: 27px;
   box-shadow: 0 0 5px #d7d7d7;
   display: none;
-  right: 8px;
   padding: 10px;
   position: absolute;
-  width: 150px;
   z-index: 4;
   text-align: center;
 }
