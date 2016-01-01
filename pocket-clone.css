@@ -4,7 +4,7 @@ body {
 	font-size: 13px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
 	font-weight: 300;
 }
 
@@ -52,6 +52,16 @@ a:hover {
 	display: block;
 	margin: 10px auto;
 	font-size: 1.3em;
+}
+
+.reader {
+	max-width: 704px;
+	margin: 0 auto;
+}
+
+.reader-content {
+	font-size: 23px;
+	line-height: 1.5;
 }
 
 .card {
@@ -107,6 +117,10 @@ a:hover {
 .card-domain {
 	color: rgb(178,170,170);
 	display: inline-block;
+}
+
+.lightGray {
+	color: rgb(178,170,170);
 }
 
 .gold {

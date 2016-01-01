@@ -3,7 +3,22 @@
   <title>Pocket</title>
 </head>
 
-<template name="App">
+<template name="Reader">
+	<div class="page-container">
+		{{>navbar}}
+		<div class="reader">
+			<h1>{{card.title}}</h1>
+			<a href="{{card.url}}">
+				<h2 class="lightGray">View Original</h2>
+			</a>
+			<div class="reader-content">
+				<p>{{card.text}}</p>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="Home">
 	<div class="page-container">
 		{{>navbar}}
 	  {{>list}}
@@ -21,7 +36,7 @@
 
 <template name="list">
 	<div class="list">
-		<h1>{{header}}</h1>
+		<h2>{{header}}</h2>
 	  {{#each cards}}
 	  	{{> card}}
 	  {{/each}}
@@ -52,11 +67,11 @@
 
 <template name="card">
 	<div class="card">
-		<a href="{{ url }}">
+		<a href="/read/{{_id}}">
   		<div class="card-image" style="background-image: url('{{ image }}');"></div>
   	</a>
   	<div class="card-info">
-			<a href="{{ url }}">
+			<a href="/read/{{_id}}">
 				<h3>{{ title }}</h3>
 				<p class="card-domain">{{ domain }}</p>
 			</a>

@@ -1,7 +1,7 @@
-var Cards = new Mongo.Collection('cards');
+var Cards = new Mongo.Collection('cards')
 
 Router.route('/', function () {
-  this.render('App', {
+  this.render('Home', {
     data: () => {
       const cards = Cards.find({archived: false}, {sort: {createdAt: -1}})
       return {header: 'My List', cards}
@@ -10,7 +10,7 @@ Router.route('/', function () {
 })
 
 Router.route('/archive', function () {
-  this.render('App', {
+  this.render('Home', {
     data: ()  => ({
       header: 'Archived'
     , cards: Cards.find({archived: true}, {sort: {createdAt: -1}})
@@ -19,7 +19,7 @@ Router.route('/archive', function () {
 })
 
 Router.route('/favorites', function () {
-  this.render('App', {
+  this.render('Home', {
     data: ()  => ({
       header: 'Favorites'
     , cards: Cards.find({favorite: true}, {sort: {createdAt: -1}})
@@ -27,8 +27,16 @@ Router.route('/favorites', function () {
   })
 })
 
+Router.route('/read/:id', function () {
+  this.render('Reader', {
+    data: () => ({
+      card: Cards.findOne({_id: this.params.id})
+    })
+  })
+})
+
 if (Meteor.isClient) {
-  Template.App.events({
+  Template.Home.events({
     'submit [data-action="save"]': (e) => {
       e.preventDefault();
       // save form values as new link doc
@@ -52,14 +60,14 @@ if (Meteor.isClient) {
     Meteor.call('delete', id)
   }
   , 'click [data-action="archive"]': (e) => {
-      e.preventDefault()
-      const id = e.target.parentElement.getAttribute('data-id')
-      Meteor.call('archive', id)
+    e.preventDefault()
+    const id = e.target.parentElement.getAttribute('data-id')
+    Meteor.call('archive', id)
   }
   , 'click [data-action="favorite"]': (e) => {
-      e.preventDefault()
-      const id = e.target.parentElement.getAttribute('data-id')
-      Meteor.call('favorite', id)
+    e.preventDefault()
+    const id = e.target.parentElement.getAttribute('data-id')
+    Meteor.call('favorite', id)
   }
   })
 }
@@ -67,18 +75,14 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     Meteor.methods({
-      add: (link) => {
-        const {url, domain, image, title} = ScrapeParser.get(link)
-        Cards.insert({
-          url
-        , domain
-        , image
-        , title
-        , favorite: false
+      add: (url) => {
+        const linkData = ScrapeParser.get(url)
+        Cards.insert(Object.assign(linkData, {
+          favorite: false
         , archived: false
-        , tags: []
+        , userTags: []
         , createdAt: Date.now()
-        })
+        }))
       }
     , delete: (id) => {
       Cards.remove(id)
@@ -96,10 +100,5 @@ if (Meteor.isServer) {
       })
     }
     })
-  });
-}
-
-function parseDomain (url) {
-  if (url.indexOf('http') > -1) return url.split('/')[2]
-  else return url.split('/')[0]
+  })
 }
